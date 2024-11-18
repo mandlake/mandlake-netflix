@@ -3,7 +3,9 @@
 export default function Home() {
   return (
     <>
-      <div className="relative h-screen flex items-center justify-center bg-gray-900"></div>
+      <div className="h-screen w-screen overflow-x-hidden mx-auto">
+        <div className="container mx-auto"></div>
+      </div>
     </>
   );
 }
