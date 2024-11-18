@@ -31,7 +31,7 @@ const Header = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-10 flex justify-between items-center bg-[#2B2B2B] hover:bg-[#141414] h-24 px-8 transition-all duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 right-0 z-10 flex justify-between items-center bg-[#2B2B2B] hover:bg-[#141414] h-24 px-16 transition-all duration-300 ease-in-out ${
           isScrolled ? "bg-gray-800 text-white" : "bg-transparent text-gray-800"
         }`}
       >
