@@ -33,7 +33,7 @@ function HomeSearch() {
   };
 
   return (
-    <div className="container-search h-screen pt-28 px-16 bg-[#2B2B2B] text-white ">
+    <div className="container-search h-full pt-28 px-16 ">
       <div className="container-search-bar">
         {/* <MovieSearch onChange={handleOptionsChange} /> */}
       </div>

@@ -73,12 +73,12 @@ const Header = () => {
           </button>
         </div>
         <div className="hidden lg:flex ml-4">
-          <button
-            type="button"
+          <Link
+            href={"/signin"}
             className="text-white hover:text-[#E5E5E5] focus:outline-none"
           >
             <FontAwesomeIcon icon={faUser} className="mr-2 text-xl " />
-          </button>
+          </Link>
         </div>
       </header>
     </>
