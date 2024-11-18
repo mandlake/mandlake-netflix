@@ -77,7 +77,7 @@ const Header = () => {
             type="button"
             className="text-white hover:text-[#E5E5E5] focus:outline-none"
           >
-            <FontAwesomeIcon icon={faUser} className="mr-2 text-3xl " />
+            <FontAwesomeIcon icon={faUser} className="mr-2 text-xl " />
           </button>
         </div>
       </header>
