@@ -3,10 +3,6 @@
 import { useState, useEffect } from "react";
 import { faTh, faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// Optional styling libraries:
-// import styled from 'styled-components';
-
-// ... (MovieGrid and MovieInfiniteScroll components)
 
 function HomePopular() {
   const [currentView, setCurrentView] = useState("grid");
@@ -26,7 +22,7 @@ function HomePopular() {
   };
 
   return (
-    <div className="popular-container">
+    <div className="text-white h-screen bg-[#2B2B2B] pt-16">
       <ViewToggle currentView={currentView} setView={setView} />
     </div>
   );
@@ -40,19 +36,19 @@ function ViewToggle({ currentView, setView }: any) {
   }, [currentView]);
 
   return (
-    <div className="view-toggle flex justify-end mt-5 md:mt-8">
+    <div className="view-toggle flex justify-end mt-5 mx-16 md:mt-8">
       <button
         className={`px-4 py-2 rounded-md text-white ${
-          activeButton === "grid" ? "bg-blue-500" : "bg-gray-400"
-        } hover:bg-blue-600`}
+          activeButton === "grid" ? "bg-[#535bfe]" : "bg-[#333333]"
+        }`}
         onClick={() => setView("grid")}
       >
         <FontAwesomeIcon icon={faTh} />
       </button>
       <button
-        className={`px-4 py-2 rounded-md text-white ml-2 ${
-          activeButton === "list" ? "bg-blue-500" : "bg-gray-400"
-        } hover:bg-blue-600`}
+        className={`px-4 py-2 rounded-md text-white ${
+          activeButton === "grid" ? "bg-[#333333]" : "bg-[#535bfe]"
+        }`}
         onClick={() => setView("list")}
       >
         <FontAwesomeIcon icon={faBars} />
