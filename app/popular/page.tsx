@@ -15,7 +15,7 @@ interface ViewToggleProps {
 function HomePopular() {
   const [currentView, setCurrentView] = useState<ViewType>("grid");
 
-  // localStorage에서 API 키를 안전하게 가져옴
+  // localStorage에서 API 키를 안전하게 가져옴.
   // const apiKey = (() => {
   //   try {
   //     return localStorage.getItem("TMDb-Key") || "";
