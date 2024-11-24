@@ -4,21 +4,37 @@ import { useState, useEffect } from "react";
 import { faTh, faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+// "grid"와 "list" 타입을 Union 타입으로 정의
+type ViewType = "grid" | "list";
+
+interface ViewToggleProps {
+  currentView: ViewType;
+  setView: (view: ViewType) => void;
+}
+
 function HomePopular() {
-  const [currentView, setCurrentView] = useState("grid");
-  const apiKey = localStorage.getItem("TMDb-Key") || "";
+  const [currentView, setCurrentView] = useState<ViewType>("grid");
+
+  // localStorage에서 API 키를 안전하게 가져옴
+  // const apiKey = (() => {
+  //   try {
+  //     return localStorage.getItem("TMDb-Key") || "";
+  //   } catch (error) {
+  //     console.error("Error accessing localStorage:", error);
+  //     return "";
+  //   }
+  // })();
 
   useEffect(() => {
-    // Handle potential side effects (e.g., fetching data)
-  }, [apiKey]); // Run when apiKey changes
+    // DOM 조작을 useEffect로 이동
+    document.body.style.overflow = currentView === "grid" ? "hidden" : "auto";
+    return () => {
+      document.body.style.overflow = "auto"; // cleanup
+    };
+  }, [currentView]);
 
-  const setView = (view: any) => {
+  const setView = (view: ViewType) => {
     setCurrentView(view);
-    if (view === "grid") {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
   };
 
   return (
@@ -28,8 +44,8 @@ function HomePopular() {
   );
 }
 
-function ViewToggle({ currentView, setView }: any) {
-  const [activeButton, setActiveButton] = useState(currentView);
+function ViewToggle({ currentView, setView }: ViewToggleProps) {
+  const [activeButton, setActiveButton] = useState<ViewType>(currentView);
 
   useEffect(() => {
     setActiveButton(currentView);

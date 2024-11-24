@@ -8,12 +8,12 @@ function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e: any) => {
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("로그인 시도:", email, password);
   };
 
-  const handleRegister = (e: any) => {
+  const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("회원가입 시도:", email, password);
   };
@@ -39,12 +39,18 @@ function SignIn() {
                     className="p-2 border-b border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-600"
                     placeholder="Username or Email"
                     value={email}
-                    onChange={(e: any) => setEmail(e)}
+                    onChange={(e: React.FormEvent<HTMLInputElement>) =>
+                      setEmail(e.currentTarget.value)
+                    }
                   />
                   <input
                     type="password"
                     className="p-2 border-b border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-600"
                     placeholder="Password"
+                    value={password}
+                    onChange={(e: React.FormEvent<HTMLInputElement>) =>
+                      setPassword(e.currentTarget.value)
+                    }
                   />
                   <div className="flex items-center justify-between text-sm text-gray-600">
                     <label className="flex items-center gap-2">
@@ -66,7 +72,7 @@ function SignIn() {
                 className="account-check text-white hover:text-gray-200 flex justify-center gap-2 text-center py-8"
                 onClick={toggleCard}
               >
-                Don't have Account? <p className="font-bold">Sign Up</p>
+                Don&apos;t have Account? <p className="font-bold">Sign Up</p>
               </Link>
             </div>
           ) : (
@@ -82,7 +88,9 @@ function SignIn() {
                     className="p-2 border-b border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-600"
                     placeholder="Email"
                     value={email}
-                    onChange={(e: any) => setEmail(e)}
+                    onChange={(e: React.FormEvent<HTMLInputElement>) =>
+                      setEmail(e.currentTarget.value)
+                    }
                   />
                   <input
                     type="password"
