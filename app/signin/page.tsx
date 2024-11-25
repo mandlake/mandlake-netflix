@@ -19,13 +19,13 @@ function SignIn() {
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("로그인 시도:", loginEmail, loginPassword);
+    console.log("로그인 성공");
   };
 
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (registerPassword === confirmPassword) {
-      console.log("회원가입 시도:", registerEmail, registerPassword);
+      console.log("회원가입 성공");
     }
   };
 
