@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write # GitHub Pages에 푸시할 권한 부여
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -34,4 +38,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./build # React 앱 빌드 결과물이 위치한 디렉토리
