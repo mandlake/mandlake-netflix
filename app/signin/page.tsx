@@ -1,26 +1,42 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function SignIn() {
   const [isLoginVisible, setIsLoginVisible] = useState(true);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+
+  const apiKey = process.env.TMDB_API_KEY || "";
+
+  // Sign In 상태
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  // Sign Up 상태
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("로그인 시도:", email, password);
+    console.log("로그인 시도:", loginEmail, loginPassword);
   };
 
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("회원가입 시도:", email, password);
+    if (registerPassword === confirmPassword) {
+      console.log("회원가입 시도:", registerEmail, registerPassword);
+    }
   };
 
   const toggleCard = () => {
     setIsLoginVisible(!isLoginVisible);
   };
+
+  useEffect(() => {
+    // Handle potential side effects (e.g., fetching data)
+    console.log("kk");
+  }, [apiKey]); // Run when apiKey changes
 
   return (
     <div className="bg-image flex justify-center items-center h-screen bg-black/90">
@@ -36,20 +52,20 @@ function SignIn() {
                 <div className="flex flex-col space-y-6 w-[800px]">
                   <input
                     type="email"
-                    className="p-2 border-b border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-600"
+                    className="p-2 border-b text-black border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-600"
                     placeholder="Username or Email"
-                    value={email}
+                    value={loginEmail}
                     onChange={(e: React.FormEvent<HTMLInputElement>) =>
-                      setEmail(e.currentTarget.value)
+                      setLoginEmail(e.currentTarget.value)
                     }
                   />
                   <input
                     type="password"
-                    className="p-2 border-b border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-600"
+                    className="p-2 border-b text-black border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-600"
                     placeholder="Password"
-                    value={password}
+                    value={loginPassword}
                     onChange={(e: React.FormEvent<HTMLInputElement>) =>
-                      setPassword(e.currentTarget.value)
+                      setLoginPassword(e.currentTarget.value)
                     }
                   />
                   <div className="flex items-center justify-between text-sm text-gray-600">
@@ -85,22 +101,30 @@ function SignIn() {
                 <div className="flex flex-col space-y-6 w-[800px]">
                   <input
                     type="email"
-                    className="p-2 border-b border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-600"
+                    className="p-2 border-b text-black border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-600"
                     placeholder="Email"
-                    value={email}
+                    value={registerEmail}
                     onChange={(e: React.FormEvent<HTMLInputElement>) =>
-                      setEmail(e.currentTarget.value)
+                      setRegisterEmail(e.currentTarget.value)
                     }
                   />
                   <input
                     type="password"
-                    className="p-2 border-b border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-600"
+                    className="p-2 border-b text-black border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-600"
                     placeholder="Password"
+                    value={registerPassword}
+                    onChange={(e: React.FormEvent<HTMLInputElement>) =>
+                      setRegisterPassword(e.currentTarget.value)
+                    }
                   />
                   <input
                     type="password"
-                    className="p-2 border-b border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-600"
+                    className="p-2 border-b text-black border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-600"
                     placeholder="Confirm Password"
+                    value={confirmPassword}
+                    onChange={(e: React.FormEvent<HTMLInputElement>) =>
+                      setConfirmPassword(e.currentTarget.value)
+                    }
                   />
                   <div className="flex items-center justify-between text-sm text-gray-600">
                     <label className="flex items-center gap-2">
