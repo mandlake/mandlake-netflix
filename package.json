@@ -2,7 +2,7 @@
   "name": "netflix",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mandlake.github.io/mandlake-netflix.github.io/",
+  "homepage": "https://mandlake.github.io/mandlake-netflix",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
