@@ -5,6 +5,9 @@ on:
     branches:
       - main # 소스 코드가 있는 브랜치 이름
 
+permissions:
+  contents: write # GitHub Pages에 푸시할 권한 부여
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -16,13 +19,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "22" # React에 적합한 Node.js 버전
+          node-version: "18" # Node.js LTS 버전으로 설정
+
+      - name: Install Yarn
+        run: npm install -g yarn # yarn 설치
 
       - name: Install dependencies
-        run: npm install
+        run: yarn install # yarn 사용
 
       - name: Build React app
-        run: npm run build
+        run: yarn build # yarn build 사용
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
